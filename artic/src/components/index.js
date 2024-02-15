@@ -6,6 +6,8 @@ import LogOut from './Header/LogOut'
 import Input from './Input'
 import LoginForm from './LoginForm/LoginForm'
 import RegistrationForm from './RegistrationForm/RegistrationForm'
+import PostForm from './PostForm/PostForm'
+import RTE from './RTE'
 
 export {
     Header,
@@ -15,5 +17,7 @@ export {
     LogOut,
     Input,
     LoginForm,
-    RegistrationForm
+    RegistrationForm,
+    PostForm,
+    RTE
 }

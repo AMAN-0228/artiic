@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Footer, Header } from "./components"
+import { Footer, Header, PostForm } from "./components"
 import { useDispatch } from "react-redux";
 import authService from './appwrite/auth.js'
 import {login, logout } from './store/slice/authSlice.js'
@@ -30,6 +30,7 @@ function App() {
         Test
         <LoginForm/>  
         <RegistrationForm/>
+        <PostForm/>
         <Footer/>
         </div>
       </div>
