@@ -15,7 +15,7 @@ const PostForm = ({post}) => {
       defaultValues:{
         title:post?.title|| '',
         slug:post?.$id|| '',
-        featureImage:post?.featureImage|| '',
+        featuredImage:post?.featuredImage|| '',
         content:post?.content|| '',
         status:post?.status|| 'active',
       }
@@ -25,20 +25,20 @@ const PostForm = ({post}) => {
     const submit = async(data)=>{
       try {
         if(post){
-          const {title, featureImage, content, status} = data
-          const deletedFile = await appwriteService.deleteFile(post?.featureImage)
+          const {title, featuredImage, content, status} = data
+          const deletedFile = await appwriteService.deleteFile(post?.featuredImage)
           if(!deletedFile){
             setErrorMsg('image change failed, please try again')
             return
           }
-          const file = await appwriteService.fileUpload(data?.featureImage[0])
+          const file = await appwriteService.fileUpload(data?.featuredImage[0])
           if(!file){
             setErrorMsg('image upload failed, please try again')
             return
           }
-          data.featureImage = file?.$id
+          data.featuredImage = file?.$id
           // update
-          const res = await appwriteService.updatePost(post?.$id, {title,featureImage,content, status})
+          const res = await appwriteService.updatePost(post?.$id, {title,featuredImage,content, status})
           if(res){
             console.log("res",res)
             navigate('/post/'+data?.$id)
@@ -46,13 +46,15 @@ const PostForm = ({post}) => {
         }
         else{
           // create
-          const file = await appwriteService.fileUpload(data?.featureImage[0])
+          const file = await appwriteService.fileUpload(data?.featuredImage[0])
           if(!file){
             setErrorMsg('image upload failed, please try again')
           }
           const fileId = file?.$id
-          data.featureImage = fileId
+          data.featuredImage = fileId
+          console.log("data",data)
           const res =await appwriteService.createPost({...data},userData?.$id)
+          console.log(res)
           if(res){
             console.log("res",res)
             navigate('/post/'+data?.slug)
@@ -85,7 +87,7 @@ const PostForm = ({post}) => {
         {/* <RTE name="content" control={control} defaultValue={getValues('content')}/> */}
       </div>
       <div className="w-1/3">
-        <Input type="file" label="Image" name="featureImage" {...register("featureImage",{required: true})} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
+        <Input type="file" label="Image" name="featuredImage" {...register("featuredImage",{required: true})} className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"/>
         <Select label={"Status"} name="status" {...register("status",{required: true})} options={['active', 'inactive']} />
       </div>
 
