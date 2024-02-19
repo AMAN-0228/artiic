@@ -8,7 +8,7 @@ const Button = ({
     ...props
     
 }) => {
-  return <button type={type} className={`rounded-xl px-4 py-2 ${bgColor} ${textColor} ${className}`} {...props}>
+  return <button type={type} className={`rounded-xl px-4 py-2 active:scale-95 ${bgColor} ${textColor} ${className}`} {...props}>
       {children}
     </button>
   

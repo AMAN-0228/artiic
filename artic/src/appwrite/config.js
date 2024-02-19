@@ -7,14 +7,14 @@ import {Client, Databases , ID, Storage, Query} from 'appwrite'
     bucket
     constructor(){
         this.client
-        .setEndPoint(conf.appwriteUrl)
-        .setProjectId(conf.appwriteProjectId)
+        .setEndpoint(conf.appwriteUrl)
+        .setProject(conf.appwriteProjectId)
 
         this.databases = new Databases(this.client)
         this.bucket  = new Storage(this.client)
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createPost({title, slug, content, featuredImage, status}, userId){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -45,6 +45,7 @@ import {Client, Databases , ID, Storage, Query} from 'appwrite'
                     content,
                     featuredImage,
                     status,
+
                 }
             )
         } catch (error) {
@@ -80,7 +81,7 @@ import {Client, Databases , ID, Storage, Query} from 'appwrite'
         return null
     }
 
-    async getPosts(query= [Query.equals('status', 'active')]){
+    async getPosts(query= [Query.equal('status', 'active')]){
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,

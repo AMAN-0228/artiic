@@ -8,6 +8,9 @@ import LoginForm from './LoginForm/LoginForm'
 import RegistrationForm from './RegistrationForm/RegistrationForm'
 import PostForm from './PostForm/PostForm'
 import RTE from './RTE'
+import Select from './Select'
+import SinglePost from './SinglePost'
+import NoDataTag from './NoDataTag'
 
 export {
     Header,
@@ -19,5 +22,8 @@ export {
     LoginForm,
     RegistrationForm,
     PostForm,
-    RTE
+    RTE,
+    Select,
+    SinglePost,
+    NoDataTag
 }
