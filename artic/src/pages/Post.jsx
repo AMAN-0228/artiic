@@ -37,7 +37,7 @@ const Post = () => {
         {
           userData && userData?.$id === post?.userId &&
         <div className='text-center flex  flex-wrap gap-2 md:ml-10 w-full  h-14'>{}
-        <Button onClick={()=>navigate('/edit-post')}>edit</Button>
+        <Button onClick={()=>navigate(`/edit-post/${post?.$id}`)}>edit</Button>
         <Button>delete</Button>
         </div>
         }
