@@ -19,7 +19,7 @@ const Footer = () => {
                     fill="black"
                   />
                 </svg>
-                <span className="ml-4 text-lg font-bold">Artic</span>
+                <span className="ml-4 text-lg font-bold">Artiic</span>
               </div>
               <div>
                 <p className="mb-4  text-base font-medium">The Tailwind CSS Component library</p>

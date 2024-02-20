@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react'
 import { Container } from '../components'
-import { useParams } from 'react-router-dom';
-import appwriteService from '../appwrite/config'
+import parse  from 'html-react-parser';
 
-const SinglePost = ({post}) => {
-    
+const SinglePost = ({post,className='',...props}) => {
+    // console.log(post)
   return (
-    <div>
-      <Container>
-        <div>
-          <h2>{post?.title}</h2>
-          <img src={post?.featureImage} className="w-full" alt="image" />
-          <p>{post?.content}</p>
+    <div className={`border border-gray-400 p-2 ${className}`} {...props}>
+      {post && <Container>
+        <div className='w-full px-4' >
+          <h2 className='font-semibold text-2xl py-5'>{post?.title}</h2>
+          <div className='w-full flex justify-center items-center '>
+          <img src={post?.featuredImage?.href} className=" h-96  w-full border border-black" alt={post?.title} />
+          </div>
+          <div className='my-5'>{parse(post?.content)}</div>
         </div>
-      </Container>
+      </Container>}
     </div>
   )
 }

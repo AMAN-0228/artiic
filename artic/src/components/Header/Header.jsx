@@ -40,12 +40,12 @@ const Header = () => {
         console.log(location)
     })
   return (
-    <div className='py-3 shadow-md '>
+    <div className='px-4 py-3 shadow-md '>
       <Container>
         <nav className='flex'>
             <div>
                 {/* logo */}
-                <span className='text-2xl text-sky-600 font-semibold'>Artic</span>
+                <span className='text-2xl text-sky-600 font-semibold'>Artiic</span>
             </div>
             <ul className='flex ml-auto'>
             {

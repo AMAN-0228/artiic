@@ -1,17 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import {Container, NoDataTag, SinglePost} from '../components/index'
 import appwriteService from '../appwrite/config'
-import { Query } from 'appwrite'
+import {  useNavigate } from 'react-router-dom'
 
 const AllPost = () => {
     const [posts, setPosts] = useState([]);
+    const navigate = useNavigate()
     useEffect(() => {
         
         appwriteService.getPosts([])
           .then((posts) => {
             console.log(posts)
          if(posts){
-             setPosts(posts.documents)
+            const fileId = posts.documents[0].featuredImage
+            const file = appwriteService.getFilePreview(fileId)
+            if(file){
+              posts.documents[0].featuredImage = file
+              setPosts(posts.documents)
+            }
          }
           })
     },[])
@@ -27,7 +33,7 @@ const AllPost = () => {
           posts && 
           posts?.map((post) => (            
             // {post card}
-            <SinglePost post={post} key={post.$id} />
+            <SinglePost post={post} key={post.$id} className='hover:cursor-pointer' onClick={() => navigate(`/post/${post.$id}`)}/>
           )) 
         }
       </Container>
