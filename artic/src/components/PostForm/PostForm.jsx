@@ -94,8 +94,8 @@ const PostForm = ({ post }) => {
   }, [watch, setValue]);
   return (
     <div>
-      {/* <form onSubmit={handleSubmit(submit)} className="flex flex-wrap"> */}
-      <form onSubmit={handleSubmit(()=>console.log(data))} className="flex flex-wrap">
+      <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+      {/* <form onSubmit={handleSubmit(()=>console.log(data))} className="flex flex-wrap"> */}
         <div className="w-2/3">
           <Input
             label="Title"
