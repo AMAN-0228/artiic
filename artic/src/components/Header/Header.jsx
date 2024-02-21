@@ -53,11 +53,11 @@ const Header = () => {
                 setToggle(false);
               }}
             >
-              Artiic
+              ARTIIC
             </span>
           </div>
           {/* for large screen */}
-          <div className="hidden md:block">
+          <div className="hidden md:block ml-auto">
             <ul className="flex ml-auto">
               {navItems.map(
                 (item) =>
@@ -81,7 +81,7 @@ const Header = () => {
           </div>
           {/* for small screen or mobile screen */}
           <div
-            className={`absolute top-10  bg-white transition duration-2000 ${
+            className={`absolute top-10  bg-white transition duration-2000 rounded-r-md z-10 shadow-md ${
               toggle ? "right-0" : "left-[-100%]"
             }`}
           >
