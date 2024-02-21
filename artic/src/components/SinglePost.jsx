@@ -10,7 +10,7 @@ const SinglePost = ({post,className='',...props}) => {
         <div className='w-full px-4' >
           <h2 className='font-semibold text-2xl py-5'>{post?.title}</h2>
           <div className='w-full flex justify-center items-center '>
-          <img src={appwriteService.getFilePreview(post?.featuredImage)} className=" h-96  w-full border border-black" alt={post?.title} />
+          <img src={appwriteService.getFilePreview(post?.featuredImage)} className=" h-96  w-auto border border-black" alt={post?.title} />
           </div>
           <div className='my-5'>{parse(post?.content)}</div>
         </div>
