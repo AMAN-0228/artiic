@@ -11,10 +11,6 @@ const Home = () => {
           .then((posts) => {
             console.log(posts)
          if(posts){
-           const fileId = posts.documents[0].featuredImage
-           const file = appwriteService.getFilePreview(fileId)
-           console.log(file)
-           posts.documents[0].featuredImage = file
              setPosts(posts.documents)
          }
           })

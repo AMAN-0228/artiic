@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react'
-import {Container, NoDataTag, SinglePost} from '../components/index'
+import {Container, NoDataTag, PostCard, SinglePost} from '../components/index'
 import appwriteService from '../appwrite/config'
 import {  useNavigate } from 'react-router-dom'
 
@@ -12,13 +12,8 @@ const AllPost = () => {
           .then((posts) => {
             console.log(posts)
          if(posts){
-            const fileId = posts.documents[0].featuredImage
-            const file = appwriteService.getFilePreview(fileId)
-            if(file){
-              posts.documents[0].featuredImage = file
-              setPosts(posts.documents)
+                        setPosts(posts.documents)
             }
-         }
           })
     },[])
 
@@ -29,13 +24,17 @@ const AllPost = () => {
   return (
     <div>
       <Container>
+        <div className='flex flex-wrap justify-evenly md:grid md:grid-cols-2 gap-6'>
+
         {
           posts && 
           posts?.map((post) => (            
             // {post card}
-            <SinglePost post={post} key={post.$id} className='hover:cursor-pointer' onClick={() => navigate(`/post/${post.$id}`)}/>
-          )) 
-        }
+            <PostCard post={post} key={post.$id} className='hover:cursor-pointer hover:scale-90' onClick={() => navigate(`/post/${post.$id}`)} />
+            // <SinglePost post={post} key={post.$id} className='hover:cursor-pointer' onClick={() => navigate(`/post/${post.$id}`)}/>
+            )) 
+          }
+          </div>
       </Container>
     </div>
   )

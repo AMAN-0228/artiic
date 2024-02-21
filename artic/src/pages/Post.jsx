@@ -13,9 +13,9 @@ const Post = () => {
       try {
         const data = await appwriteService.getPostBySlug(slug)
         
-        const file =  appwriteService.getFilePreview(data?.featuredImage)
-        data.featuredImage = file
-        console.log(data)
+        // const file =  appwriteService.getFilePreview(data?.featuredImage)
+        // data.featuredImage = file
+        // console.log(data)
         setPost(data)
       } catch (error) {
         console.log(error)

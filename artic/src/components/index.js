@@ -11,6 +11,7 @@ import RTE from './RTE'
 import Select from './Select'
 import SinglePost from './SinglePost'
 import NoDataTag from './NoDataTag'
+import PostCard from './PostCard'
 
 export {
     Header,
@@ -25,5 +26,6 @@ export {
     RTE,
     Select,
     SinglePost,
-    NoDataTag
+    NoDataTag,
+    PostCard
 }
