@@ -8,16 +8,17 @@ import { Outlet, useNavigate } from "react-router-dom";
 function App() {
   const [Loading, setLoading] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     authService
       .getCurrentUser()
       .then((userData) => {
         if (userData) dispatch(login(userData));
-        else{
-          dispatch(logout());}
-          // navigate('/log-in')
+        else {
+          dispatch(logout());
+        }
+        // navigate('/log-in')
       })
       .finally(() => setLoading(false));
   }, []);
@@ -32,9 +33,8 @@ function App() {
       <div className="min-h-screen flex flex-wrap content-between ">
         <div className="w-full block">
           <Header />
-          <main className="w-full my-3">
-
-          <Outlet />
+          <main className="w-full my-3 px-5">
+            <Outlet />
           </main>
           <Footer />
         </div>

@@ -94,14 +94,15 @@ const PostForm = ({ post }) => {
   }, [watch, setValue]);
   return (
     <div>
-      <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+      {/* <form onSubmit={handleSubmit(submit)} className="flex flex-wrap"> */}
+      <form onSubmit={handleSubmit(()=>console.log(data))} className="flex flex-wrap">
         <div className="w-2/3">
           <Input
             label="Title"
             name="title"
             {...register("title", { required: true })}
             placeholder="Title"
-            defaultValue={post?.title}
+            // defaultValue={post?.title}
           />
           <Input
             label="Slug"
@@ -134,8 +135,8 @@ const PostForm = ({ post }) => {
             {...register("status", { required: true })}
             options={["active", "inactive"]}
           />
-        </div>
 
+        </div>
         <Button className={"mt-6"}>
           {post ? "Update Post" : "Create Post"}
         </Button>
