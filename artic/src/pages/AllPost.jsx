@@ -24,7 +24,7 @@ const AllPost = () => {
   return (
     <div>
       <Container>
-        <div className='flex flex-wrap justify-evenly md:grid md:grid-cols-2 gap-6'>
+        <div className='flex flex-wrap justify-evenly md:grid md:grid-cols-3 gap-6'>
 
         {
           posts && 
