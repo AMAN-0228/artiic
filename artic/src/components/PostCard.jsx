@@ -1,17 +1,15 @@
-import React from 'react'
 import appwriteService from '../appwrite/config'
 // import { ArrowUpRight } from 'lucide-react'
 
 const PostCard = ({post,className='',...props}) => {
+  
   return (
-    <>
-     
-    <div className={`flex max-w-2xl flex-col items-center rounded-md border md:flex-row ${className}`} {...props}>
-      <div className="h-full w-full md:h-[200px] md:w-[300px]">
+    <div className={`py-3 px-5 flex max-w-2xl flex-row items-center rounded-md border-2  md:flex-col ${className}`} {...props}>
+      <div className="h-full w-full max-h-fit max-w-fit md:h-[200px] md:w-[300px]">
         <img
           src={`${appwriteService.getFilePreview(post?.featuredImage)}`}
           alt={`${post?.title}`}
-          className="h-full w-full rounded-md object-cover"
+          className="h-full w-full rounded-md object-cover border border-black shadow-md"
         />
       </div>
       <div>
@@ -35,7 +33,7 @@ const PostCard = ({post,className='',...props}) => {
               #Laptop
             </span>
           </div>}
-          <div className="mt-3 flex items-center space-x-2">
+          {/* <div className="mt-3 flex items-center space-x-2">
             <img
               className="inline-block h-8 w-8 rounded-full"
               src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
@@ -45,12 +43,12 @@ const PostCard = ({post,className='',...props}) => {
               <span className="text-[10px] font-medium text-gray-900">Dan Abromov</span>
               <span className="text-[8px] font-medium text-gray-500">@dan_abromov</span>
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
   
-    </>
+    
   )
 }
 
