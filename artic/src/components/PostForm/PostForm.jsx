@@ -17,7 +17,7 @@ const PostForm = ({ post }) => {
     setValue,
     control,
     getValues,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({
     defaultValues: {
       title: post?.title || "",
@@ -92,6 +92,13 @@ const PostForm = ({ post }) => {
       subscribe.unsubscribe();
     };
   }, [watch, setValue]);
+  // useEffect(() => {
+  //   console.log(post)
+  //   console.log("title",getValues("title"))
+  //   console.log("content",getValues("content"))
+  //   console.log("slug",getValues("slug"))
+  //   console.log("status",getValues("status"))
+  // },[post])
   return (
     <div>
       <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
