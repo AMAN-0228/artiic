@@ -18,16 +18,16 @@ const SinglePost = ({ post, className = "", ...props }) => {
 
   // console.log(post)
   return (
-    <div className={`  box-border align-middle ${className}`} {...props}>
+    <div className={`box-border align-middle ${className}`} {...props}>
       {post && (
         <>
           <div className="w-full max-w-[680px] px-4 flex flex-col justify-center items-center mx-auto ">
-            <div className=" w-full h-fit flex justify-between">
-              <div className="w-full">
+            <div className=" w-full h-fit flex">
+              <div className="">
               <h2 className="font-bold text-3xl py-5 ">{post?.title}</h2>
               </div>
               {userData && userData?.$id === post?.userId && (
-                <div className="flex flex-wrap justify-between  my-auto gap-3 w-1/2 ml-auto align-middle md:h-fit">
+                <div className="ml-auto flex flex-wrap  my-auto gap-3  align-middle md:h-fit">
                   {}
                   <Button onClick={() => navigate(`/edit-post/${post?.$id}`)}>
                     edit
