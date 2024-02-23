@@ -34,6 +34,11 @@ const Home = () => {
   return (
     <div>
       <Container>
+
+        {/* something about ARTIIC */}
+        <div className='bg-sky-500'>
+          <h1 className="text-3xl font-bold">ARTIIC</h1>
+        </div>
         {
           posts && 
           posts?.map((post) => (            

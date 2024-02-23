@@ -2,7 +2,7 @@ import {RegistrationForm} from '../components/index'
 
 const RegistrationPage = () => {
   return (
-    <div>
+    <div className='px-4'>
       <RegistrationForm/>
     </div>
   )

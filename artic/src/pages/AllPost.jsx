@@ -1,5 +1,5 @@
 import  { useEffect, useState } from 'react'
-import {Container, NoDataTag, PostCard, SinglePost} from '../components/index'
+import {Container, NoDataTag, PostCard} from '../components/index'
 import appwriteService from '../appwrite/config'
 import {  useNavigate } from 'react-router-dom'
 
@@ -22,7 +22,7 @@ const AllPost = () => {
     // return <div className='text-center'>No posts</div>
 
   return (
-    <div>
+    <div className='px-4'>
       <Container>
         <div className='flex flex-wrap justify-evenly md:grid md:grid-cols-3 gap-6'>
 

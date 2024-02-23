@@ -1,8 +1,7 @@
 import  { useEffect, useState } from 'react'
 import {  Container, SinglePost } from '../components';
-import { useNavigate, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import appwriteService from '../appwrite/config';
-import { useSelector } from 'react-redux';
 
 const Post = () => {
     const { slug } = useParams();
@@ -21,7 +20,7 @@ const Post = () => {
         loadPost()
     },[slug])
   return (
-    <div className='w-full '>
+    <div className='w-full py-4'>
       <Container >
       <SinglePost post={post}  />
       </Container>

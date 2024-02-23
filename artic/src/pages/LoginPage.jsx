@@ -2,7 +2,7 @@ import {LoginForm} from '../components/index'
 
 const LoginPage = () => {
   return (
-    <div>
+    <div className='px-4'>
       LoginPage
       <LoginForm/>
     </div>

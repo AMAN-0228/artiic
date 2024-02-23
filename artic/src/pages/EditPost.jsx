@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import  { useCallback, useEffect, useState } from "react";
 import { Container, PostForm } from "../components";
 import { useParams } from "react-router-dom";
 import appwriteService from "../appwrite/config";
@@ -22,7 +22,7 @@ const EditPost = () => {
     loadPost();
   }, [slug]);
   return (
-    <div>
+    <div className="px-4">
       <Container>
         <PostForm post={post} />
       </Container>

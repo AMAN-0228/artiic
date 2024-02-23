@@ -33,7 +33,7 @@ function App() {
       <div className="min-h-screen flex flex-wrap content-between overflow-hidden">
         <div className="w-full block">
           <Header />
-          <main className="w-full my-3 px-5">
+          <main className="w-full my-3">
             <Outlet />
           </main>
           <Footer />
