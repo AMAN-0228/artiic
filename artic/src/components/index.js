@@ -12,6 +12,8 @@ import Select from './Select'
 import SinglePost from './SinglePost'
 import NoDataTag from './NoDataTag'
 import PostCard from './PostCard'
+import Trending from './Trending'
+import PostCardLessDetails from './PostCardLessDetails'
 
 export {
     Header,
@@ -27,5 +29,7 @@ export {
     Select,
     SinglePost,
     NoDataTag,
-    PostCard
+    PostCard,
+    Trending,
+    PostCardLessDetails
 }

@@ -1,54 +1,64 @@
-import { useEffect, useState } from 'react'
-import { Container, NoDataTag, SinglePost } from '../components';
-import appwriteService from '../appwrite/config';
+import { useEffect, useState } from "react";
+import { Container, NoDataTag, SinglePost, Trending } from "../components";
+import appwriteService from "../appwrite/config";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-    useEffect(() => {
-        setLoading(true)
-        appwriteService.getPosts([])
-          .then((posts) => {
-            console.log(posts)
-         if(posts){
-             setPosts(posts.documents)
-         }
-          })
-          .finally(() => setLoading(false))
-    },[])
+  useEffect(() => {
+    setLoading(true);
+    appwriteService
+      .getPosts([])
+      .then((posts) => {
+        console.log(posts);
+        if (posts) {
+          setPosts(posts.documents);
+        }
+      })
+      .finally(() => setLoading(false));
+  }, []);
 
-    if(loading)
+  if (loading)
     return (
-  <NoDataTag>
-      <div className="text-3xl text-center font-semibold h-screen">
-        Loading...
-        
-      </div>
-  </NoDataTag>
+      <NoDataTag>
+        <div className="text-3xl text-center font-semibold h-screen">
+          Loading...
+        </div>
+      </NoDataTag>
     );
 
-    if(posts.length === 0)
-    return <NoDataTag className='my-10 text-xl font-bold'> No posts </NoDataTag>
-    // return <div className='text-center'>No posts</div>
+  if (posts.length === 0)
+    return (
+      <NoDataTag className="my-10 text-xl font-bold"> No posts </NoDataTag>
+    );
+  // return <div className='text-center'>No posts</div>
 
   return (
     <div>
-      <Container>
-
-        {/* something about ARTIIC */}
-        <div className='bg-sky-500'>
-          <h1 className="text-3xl font-bold">ARTIIC</h1>
+      {/* something about ARTIIC */}
+      <div className="w-full bg-slate-600">
+        <div className="px-4 py-20 text-white">
+          <h1 className="text-5xl md:text-9xl font-bold text-sky-600">
+            ARTIIC
+          </h1>
+          <p className="text-2xl mt-8">
+            The place where you can{" "}
+            <span className="text-3xl text-sky-600">Share</span> your{" "}
+            <span className="text-3xl text-sky-600">Knowledge</span> . . .
+          </p>
         </div>
-        {
-          posts && 
-          posts?.map((post) => (            
+      </div>
+      <Container className="px-4">
+        {/* trending section */}
+        <Trending posts={posts} />
+        {posts &&
+          posts?.map((post) => (
             // {post card}
-            <SinglePost post={post} key={post.$id} className='my-4' />
-          )) 
-        }
+            <SinglePost post={post} key={post.$id} className="my-4" />
+          ))}
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
