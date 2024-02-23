@@ -12,24 +12,13 @@ const Post = () => {
     const loadPost = async() => {
       try {
         const data = await appwriteService.getPostBySlug(slug)
-        
-        // const file =  appwriteService.getFilePreview(data?.featuredImage)
-        // data.featuredImage = file
-        // console.log(data)
         setPost(data)
       } catch (error) {
         console.log(error)
       }
     }
 
-    const deleteHandler = async() => {
-      try {
-        await appwriteService.deletePost(slug)
-        navigate('/')
-      } catch (error) {
-        console.log("On delete post handler :: error ",error)
-      }
-    }
+    
     useEffect(() => {
         loadPost()
     },[slug])
@@ -46,8 +35,6 @@ const Post = () => {
         {
           userData && userData?.$id === post?.userId &&
         <div className='text-center flex  flex-wrap gap-2 md:ml-10 w-full  h-14'>{}
-        <Button onClick={()=>navigate(`/edit-post/${post?.$id}`)}>edit</Button>
-        <Button onClick={deleteHandler}>delete</Button>
         </div>
         }
       </div>
