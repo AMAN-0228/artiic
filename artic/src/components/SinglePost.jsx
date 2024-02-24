@@ -16,7 +16,7 @@ const SinglePost = ({ post, className = "", ...props }) => {
     }
   };
 
-  console.log((parse(post.content)[0]?.props))
+  // console.log((parse(post?.content)[0]?.props))
   return (
     <div className={`box-border align-middle ${className}`} {...props}>
       {post && (

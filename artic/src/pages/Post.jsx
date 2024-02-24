@@ -5,7 +5,7 @@ import appwriteService from '../appwrite/config';
 
 const Post = () => {
     const { slug } = useParams();
-    const [post, setPost] = useState('');
+    const [post, setPost] = useState(null);
     const loadPost = async() => {
       try {
         const data = await appwriteService.getPostBySlug(slug)
