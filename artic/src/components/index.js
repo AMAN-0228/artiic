@@ -14,6 +14,7 @@ import NoDataTag from './NoDataTag'
 import PostCard from './PostCard'
 import Trending from './Trending'
 import PostCardLessDetails from './PostCardLessDetails'
+import TagsDisplaySection from './TagsDisplaySection'
 
 export {
     Header,
@@ -31,5 +32,6 @@ export {
     NoDataTag,
     PostCard,
     Trending,
-    PostCardLessDetails
+    PostCardLessDetails,
+    TagsDisplaySection
 }
