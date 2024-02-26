@@ -37,9 +37,9 @@ const Header = () => {
       active: authStatus,
     },
   ];
-  useEffect(() => {
-    console.log(location);
-  });
+  // useEffect(() => {
+  //   console.log(location);
+  // });
   return (
     <div className="px-4 py-3 shadow-md ">
       <Container>

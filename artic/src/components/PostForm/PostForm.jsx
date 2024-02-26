@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const PostForm = ({ post }) => {
-
   const navigate = useNavigate();
   const [errorMsg, setErrorMsg] = useState("");
   const userData = useSelector((state) => state.auth.userData);
-  
+
   const {
     register,
     handleSubmit,
@@ -30,37 +29,37 @@ const PostForm = ({ post }) => {
 
   const submit = async (data) => {
     try {
-    // if(data.some(item => item === undefined)){
-    //   setErrorMsg("Please fill all required fields")
-    //   return
-    // }
-    console.log("data", data);
-    console.log("post", post);
+      // if(data.some(item => item === undefined)){
+      //   setErrorMsg("Please fill all required fields")
+      //   return
+      // }
+      // console.log("data", data);
+      // console.log("post", post);
       if (post) {
         const { title, featuredImage, content, status } = data;
-        if(post?.featuredImage){
-          console.log(post)
-        const previewFile =  appwriteService.getFilePreview(post?.featuredImage);
-        if(previewFile){
-          console.log("previewFile", previewFile)
-          const deletedFile = deleteFileAction(post?.featuredImage);
+        if (post?.featuredImage && featuredImage) {
+          const previewFile = appwriteService.getFilePreview(
+            post?.featuredImage
+          );
+          if (previewFile) {
+            const deletedFile = appwriteService.deleteFile(post?.featuredImage);
             if (!deletedFile) {
               setErrorMsg("image change failed, please try again");
               // return;
-            }}
+            }
           }
-        const file = await appwriteService.fileUpload(featuredImage[0]);
-        if (!file) {
-          setErrorMsg("image upload failed, please try again");
-          return;
         }
-        console.log(file)
-        const fileId = file?.$id;
+        
+          const file = await appwriteService.fileUpload(featuredImage[0]);
+          if (!file) {
+            setErrorMsg("image upload failed, please try again");
+            return;
+          }
+          const fileId = file?.$id;
         // update
-        console.log("data", data)
         const res = await appwriteService.updatePost(post?.$id, {
           title,
-          featuredImage: fileId,
+          featuredImage: fileId|| post?.featuredImage,
           content,
           status,
         });
@@ -106,21 +105,21 @@ const PostForm = ({ post }) => {
   useEffect(() => {
     if (post) {
       setValue("title", post.title || "");
-    setValue("slug", post.$id || "");
-    setValue("content", post.content || "");
-    setValue("status", post.status || "active");
+      setValue("slug", post.$id || "");
+      setValue("content", post.content || "");
+      setValue("status", post.status || "active");
     }
     // console.log(post)
     // console.log("title",getValues("title"))
     // console.log("content",getValues("content"))
     // console.log("slug",getValues("slug"))
     // console.log("status",getValues("status"))
-  },[post,setValue])
-  
+  }, [post, setValue]);
+
   return (
     <div>
       <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      {/* <form onSubmit={handleSubmit(()=>console.log(data))} className="flex flex-wrap"> */}
+        {/* <form onSubmit={handleSubmit(()=>console.log(data))} className="flex flex-wrap"> */}
         <div className="w-2/3">
           <Input
             label="Title"
@@ -131,8 +130,8 @@ const PostForm = ({ post }) => {
             isRequired
           />
           {errors.title && (
-              <p className="text-red-500 mb-5">Title is required</p>
-            )}
+            <p className="text-red-500 mb-5">Title is required</p>
+          )}
           <Input
             label="Slug"
             name="slug"
@@ -145,9 +144,7 @@ const PostForm = ({ post }) => {
             defaultValue={watch("slug")}
             isRequired
           />
-          {errors.slug && (
-            <p className="text-red-500 mb-5">Slug is required</p>
-          )}
+          {errors.slug && <p className="text-red-500 mb-5">Slug is required</p>}
           {/* <RTE name="content" control={control} defaultValue={post?.content}/> */}
           <RTE
             name="content"
@@ -163,14 +160,14 @@ const PostForm = ({ post }) => {
             type="file"
             label="Image"
             name="featuredImage"
-            {...register("featuredImage", { required: true })}
+            {...register("featuredImage", { required: post ? false : true })}
             // defaultValue={watch("featuredImage")}
-            isRequired
+            isRequired={post ? false : true}
             className="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
           />
-          {
-            errors.featuredImage && <p className="text-red-500 mb-5">Image is required</p>
-          }
+          {errors.featuredImage && (
+            <p className="text-red-500 mb-5">Image is required</p>
+          )}
           <Select
             label={"Status"}
             name="status"
@@ -184,17 +181,14 @@ const PostForm = ({ post }) => {
           )}
           <div className=" mt-7 mx-auto h-full w-full max-h-fit max-w-fit md:h-[200px] md:w-[300px]">
             <p>Preview</p>
-        <img
-          src={`${appwriteService.getFilePreview(post?.featuredImage)}`}
-          alt={`${post?.title}`}
-          className="h-full w-full rounded-md object-cover border border-black shadow-md"
-        />
-      </div>
-
+            <img
+              src={`${appwriteService.getFilePreview(post?.featuredImage)}`}
+              alt={`${post?.title}`}
+              className="h-full w-full rounded-md object-cover border border-black shadow-md"
+            />
+          </div>
         </div>
-        {errorMsg && (
-          <p className="text-red-500 mb-5">{errorMsg}</p>
-        )}
+        {errorMsg && <p className="text-red-500 mb-5">{errorMsg}</p>}
         <Button className={"mt-6"}>
           {post ? "Update Post" : "Create Post"}
         </Button>

@@ -10,7 +10,7 @@ const AllPost = () => {
         
         appwriteService.getPosts([])
           .then((posts) => {
-            console.log(posts)
+            // console.log(posts)
          if(posts){
                         setPosts(posts.documents)
             }

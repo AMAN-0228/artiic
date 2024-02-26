@@ -10,7 +10,7 @@ const EditPost = () => {
 
   const loadPost = useCallback(async () => {
     appwriteService.getPostBySlug(slug).then((post) => {
-      console.log(post);
+      // console.log(post);
       if (post) {
         
           setPost(post);
