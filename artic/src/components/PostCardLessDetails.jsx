@@ -1,5 +1,5 @@
 import appwriteService from '../appwrite/config'
-import DateConverter from './DateConverter'
+import DateConverter from '../action/DateConverter'
 const PostCardLessDetails = ({post,trendListNumber,className='',...props}) => {
   return (
     <div className={`py-3 px-5 flex max-w-2xl  items-center rounded-md border-2  ${className}`} {...props}>
