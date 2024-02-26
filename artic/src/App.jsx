@@ -30,7 +30,7 @@ function App() {
     );
   return (
     <>
-      <div className="min-h-screen flex flex-wrap content-between overflow-hidden">
+      <div className="min-h-screen flex flex-wrap content-between ">
         <div className="w-full block">
           <Header />
           <main className="w-full my-3">

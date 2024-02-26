@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { Container, NoDataTag, SinglePost, TagsDisplaySection, Trending } from "../components";
+import {
+  Container,
+  HeroSection,
+  NoDataTag,
+  SinglePost,
+  TagsDisplaySection,
+  Trending,
+} from "../components";
 import appwriteService from "../appwrite/config";
 
 const Home = () => {
@@ -36,33 +43,26 @@ const Home = () => {
   return (
     <div>
       {/* something about ARTIIC */}
-      <div className="w-full bg-slate-600">
-        <div className="px-4 py-20 text-white">
-          <h1 className="text-5xl md:text-9xl font-bold text-sky-600">
-            ARTIIC
-          </h1>
-          <p className="text-2xl mt-8">
-            The place where you can{" "}
-            <span className="text-3xl text-sky-600">Share</span> your{" "}
-            <span className="text-3xl text-sky-600">Knowledge</span> . . .
-          </p>
-        </div>
-      </div>
+      <HeroSection />
       <Container className="px-4">
         {/* trending section */}
+        <div>
         <Trending posts={posts} />
-        
+        </div>
+
         <div className="mt-5 grid grid-cols-8 md:grid-cols-12 gap-8 h-full">
-          <section className="col-span-8 md:col-start-1">
+          <section className="col-span-8 md:col-start-1 h-full">
             recommended
+            <div>
               {posts &&
                 posts?.map((post) => (
                   // {post card}
                   <SinglePost post={post} key={post.$id} className="my-4" />
                 ))}
+            </div>
           </section>
           <aside className="md:block col-span-8 md:col-span-4 md:col-start-9">
-            <TagsDisplaySection/>
+            <TagsDisplaySection />
           </aside>
         </div>
       </Container>
