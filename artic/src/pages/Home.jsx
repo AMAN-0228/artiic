@@ -51,7 +51,7 @@ const Home = () => {
         </div>
 
         <div className="mt-5 grid grid-cols-8 md:grid-cols-12 gap-8 h-full">
-          <section className="col-span-8 md:col-start-1 h-full">
+          <section className="col-span-8 md:col-start-1 h-full order-2 md:order-1">
             recommended
             <div>
               {posts &&
@@ -61,7 +61,7 @@ const Home = () => {
                 ))}
             </div>
           </section>
-          <aside className="md:block col-span-8 md:col-span-4 md:col-start-9">
+          <aside className="md:block col-span-8 md:col-span-4 md:col-start-9 order-1">
             <TagsDisplaySection />
           </aside>
         </div>
