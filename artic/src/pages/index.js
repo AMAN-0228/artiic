@@ -6,6 +6,7 @@ import Post from './Post'
 import EditPost from './EditPost'
 import AddPost from './AddPost'
 import PageNotFound from './PageNotFound'
+import TagPage from './TagPage'
 
 
 export {
@@ -16,5 +17,6 @@ export {
     Post,
     EditPost,
     AddPost,
-    PageNotFound
+    PageNotFound,
+    TagPage
 }
