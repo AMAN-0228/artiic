@@ -6,7 +6,7 @@ import {Provider} from 'react-redux'
 import {store} from './store/store.js'
 import {  RouterProvider, createBrowserRouter } from 'react-router-dom'
 import AuthLayout from './components/AuthLayout.jsx'
-import { AddPost, AllPost, EditPost, Home, LoginPage, PageNotFound, Post, RegistrationPage } from './pages/index.js'
+import { AddPost, AllPost, EditPost, Home, LoginPage, PageNotFound, Post, RegistrationPage, TagPage } from './pages/index.js'
 
 const router = createBrowserRouter([{
   path: '/',
@@ -50,6 +50,10 @@ const router = createBrowserRouter([{
   {
     path: '/post/:slug',
     element:(<AuthLayout authStatus={true}> <Post/> </AuthLayout>)
+  },
+  {
+    path: '/tag/:tagName',
+    element:(<AuthLayout authStatus={true}> <TagPage/> </AuthLayout>)
   },
   {
     path:'*',
