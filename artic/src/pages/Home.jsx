@@ -52,7 +52,7 @@ const Home = () => {
 
         <div className="mt-5 grid grid-cols-8 md:grid-cols-12 gap-8 h-full">
           <section className="col-span-8 md:col-start-1 h-full order-2 md:order-1">
-            recommended
+            <span className="text-xl text-red-400">Recommended</span>
             <div>
               {posts &&
                 posts?.map((post) => (
