@@ -14,7 +14,7 @@ const Header = () => {
     {
       name: "Home",
       path: "/",
-      active: authStatus,
+      active: !authStatus,
     },
     {
       name: "Login",

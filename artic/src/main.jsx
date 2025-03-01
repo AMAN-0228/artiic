@@ -13,7 +13,7 @@ const router = createBrowserRouter([{
   element: <App />,
   children: [{
     path: '/',
-    element: (<AuthLayout authStatus={true}>
+    element: (<AuthLayout authStatus={false}>
       <Home />
       </AuthLayout>)
   },
