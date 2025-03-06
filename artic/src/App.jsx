@@ -31,9 +31,9 @@ function App() {
   return (
     <>
       <div className="min-h-screen flex flex-wrap content-between ">
-        <div className="w-full block">
+        <div className="min-h-svh w-full block">
           <Header />
-          <main className="w-full my-3">
+          <main className="min-h-[70vh] w-full my-3">
             <Outlet />
           </main>
           <Footer />
